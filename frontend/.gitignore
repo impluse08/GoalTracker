@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node,expressionengine
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,expressionengine
+# Created by https://www.toptal.com/developers/gitignore/api/node,react,expressionengine
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,react,expressionengine
 
 ### ExpressionEngine ###
 .DS_Store
@@ -162,4 +162,17 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-# End of https://www.toptal.com/developers/gitignore/api/node,expressionengine
+### react ###
+.DS_*
+**/*.backup.*
+**/*.back.*
+
+node_modules
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+# End of https://www.toptal.com/developers/gitignore/api/node,react,expressionengine
