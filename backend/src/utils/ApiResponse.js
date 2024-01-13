@@ -1,4 +1,4 @@
-class ApiResponce {
+class ApiResponse {
     constructor(statusCode, data, message = "Success"){
         this.statusCode = statusCode
         this.data = data
@@ -7,7 +7,7 @@ class ApiResponce {
     }
 }
 
-export { ApiResponce }
+export { ApiResponse }
 
 /*
 Of course! Imagine you have a special box called ApiResponce. This box is like a messenger that carries information from one place to another in a computer program. It knows three important things: statusCode, data, and message.

@@ -1,11 +1,12 @@
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/ApiError.js";
-import { ApiResponse } from "../utils/ApiResponse.js"
+import {asyncHandler} from "../utils/asyncHandler.js";
+import {ApiError} from "../utils/ApiError.js"
+import {ApiResponse} from "../utils/ApiResponse.js"
 import {User} from "../models/user.model.js"
-// import {uploadOnCloudinary} from "../utils/cloudnary.js"
+import {uploadOnCloudinary} from "../utils/cloudnary.js"
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 
+/*
 const generateAccessAndRefreshTokens = async(userId) => {
     try {
         const user = await User.findById(userId)
@@ -19,10 +20,11 @@ const generateAccessAndRefreshTokens = async(userId) => {
         throw new ApiError(500, "Something went wrong while generating refresh and access token")
     }
 }
+*/
 
 const registerUser = asyncHandler( async (req, res) =>{
     const {fullName, email, username, password} = req.body
-    if ([fullName,email, username, password].some((field) => field?.trim() === "")
+    if ([fullName, email, username, password].some((field) => field?.trim() === "")
     ){
         throw new ApiError(400, "All fields are required")
     }
@@ -34,12 +36,12 @@ const registerUser = asyncHandler( async (req, res) =>{
     if (existedUser) {
         throw new ApiError(409, "User with email or username already exists")
     }
-
+    console.log(username, fullName );
     const user = await User.create({
         fullName,
         email,
-        password,
-        username: username.toLowerCase()
+        username,
+        password
     })
 
     const createdUser = await User.findById(user._id).select(

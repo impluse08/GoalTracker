@@ -4,6 +4,7 @@ import {
 } from "../controllers/user.controller.js"
 import { upload } from "../middlewares/multer.middlerware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
+import multer from "multer";
 
 const router = Router()
 

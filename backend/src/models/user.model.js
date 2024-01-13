@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, {Schema} from "mongoose";
 import jwt from "jsonwebtoken"
-import bcrpyt from "bcrypt"
+import bcrypt from "bcrypt"
 
 const userSchema = new Schema(
     {
@@ -10,7 +10,7 @@ const userSchema = new Schema(
             unique: true,
             lowercase: true,
             trim: true,
-            index: true
+            index: true,
         },
         email: {
             type: String,
@@ -44,10 +44,10 @@ const userSchema = new Schema(
     }
 )
 
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function(next) {
     if(!this.isModified("password")) return next();
 
-    this.password =  await bcrpyt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next()
 })
 /*
@@ -60,8 +60,9 @@ If the password has been modified, the code hashes it using the bcrypt library. 
 Finally, the hashed password is assigned to the password field and the function returns.
 */
 
-userSchema.methods.isPasswordCorrect = async function(password){
-    return await bcrpyt.compare(password, this.password)
+userSchema.methods.isPasswordCorrect = async function
+(password){
+    return await bcrypt.compare(password, this.password)
 }
 /*
 The selected code is a method in the userSchema that is used to compare a given password with the hashed password stored in the database. The method is asynchronous, which means it returns a Promise.
@@ -71,13 +72,13 @@ The code uses the bcrypt library to hash the given password and compare it with 
 This method is used in the authenticate method of the User model to verify the password of a user when they try to log in.
 */
 
-userSchema.methods.generateAuthToken = async function(){
+userSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
             _id: this._id,
             email: this.email,
             username: this.username,
-            fullName: this.fullName
+            fullName: this.fullname
         },
         process.env.ACCESS_TOKEN_SECRET,
         {

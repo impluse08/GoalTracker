@@ -1,24 +1,19 @@
 import mongoose from "mongoose";
-import { DB_NAME } from "../constanst.js"
-import dotenv from "dotenv";
-dotenv.config({
-    path: "../.env"
-})
+import { DB_NAME } from "../constanst.js";
 
-const connectDB = (async () => {
-    try {
-        // console.log(`${process.env.MONGODB_URI}/${DB_NAME}`);
+const connectDB = ( async () =>{
+    try{
         const conectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-        console.log(`\n MongoDB Connected to DB HOST: ${conectionInstance.connection.host}}`);
-    } catch (error) {
-        console.log("MONGODB connection failed", error);
-        process.exit(1);
+        console.log(`\n MonogDB Connected !! DB HOST: ${conectionInstance.connection.host}`);
+    }catch (error){
+        console.log("MONGODB connection failed: ",error);
+        process.exit(1)
     }
 })
 
 export default connectDB;
 
-/*
+/* 
 process.exit(1); is a command in Node.js that terminates the Node.js process with an exit code. The process.exit() method is used to forcefully end the Node.js process, and the argument passed to it is treated as the exit code.
 
 Here's a breakdown of the statement:
