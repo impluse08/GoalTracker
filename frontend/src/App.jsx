@@ -328,16 +328,17 @@ function App(){
                 </div>
               <div style={{flex: 1, height: '1px', backgroundColor: 'grey', marginRight:'10px'}} />
             </div>
-              <div className="flex text-lg font-semibold text-gray-100 ml-12 mt-4">
-                <p className='ml-1' >Email</p><p className='pl-72'>Full Name </p>
-              </div>
+              
               <form onSubmit={handleSubmit}>
+                <div className="flex text-lg font-semibold text-gray-100 ml-12 mt-4">
+                  <p className='ml-1' >Email</p><p className='pl-72'>Full Name </p>
+                </div>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                   <div>
-                    <input type="text" name="email" value={formData.email} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block  py-2 pl-1 pr-9 ml-12 w-50 h-11 " placeholder="pranav.sarwe@gmail.com" required/>
+                    <input type="text" name="email" value={formData.email} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block  py-2 pl-1 pr-9 ml-12 w-50 h-11 " placeholder="example@somemail.com" required/>
                   </div>
                   <div>
-                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 ml-4 w-88 h-11"  placeholder="Pranav Sarwe" required/>
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 ml-4 w-88 h-11"  placeholder="John Doe" required/>
                   </div>
                 </div>
                 <div className="flex text-lg font-semibold text-gray-100 ml-12 mt-4">
@@ -345,7 +346,7 @@ function App(){
                 </div>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                   <div>
-                    <input type="text" name="username" className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block  py-2 pl-1 pr-9 ml-12 w-50 h-11 " placeholder="implus007" value={formData.username} onChange={handleChange} required/>
+                    <input type="text" name="username" className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block  py-2 pl-1 pr-9 ml-12 w-50 h-11 " placeholder="coolname007" value={formData.username} onChange={handleChange} required/>
                   </div>
                   <div>
                     <input type="text" name="password" value={formData.password} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 ml-4 w-88 h-11"  placeholder="AGCTF#%3245SFG" required/>
@@ -362,7 +363,8 @@ function App(){
                 </div>
                 <div className='ml-12'>
                   <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Add an Avatar</label>
-                  <div className='w-80'><input className="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300" id="avatar" type="file" />
+                  <div className='w-80'>
+                    <input className="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300" id="avatar" type="file" />
                   </div>
                 </div>
                 <div style={{
@@ -371,9 +373,10 @@ function App(){
                     justifyContent: 'center',
                     marginTop:'40px'
                   }}>
-                    <Button type="submit" component="label" variant="contained">
-                    <p className='px-10 py-2'>Create an Account</p>
-                    </Button>
+                    <button type="submit" className="bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-10 py-2 text-white inline-flex items-center">
+                      <p className='px-2'>Create an Account</p>
+                    </button>
+
                 </div>
               </form>
               <div style={{display: 'flex',alignItems: 'center',justifyContent: 'center',marginTop:'5px pb-24',color:'white'}}>
