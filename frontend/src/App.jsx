@@ -279,14 +279,12 @@ function App(){
     });
 
     const handleChange = (e) =>{
-      console.log(e.target);
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
-
     const handleSubmit =  async (e) => {
       e.preventDefault();
-
+      console.log("submit working");
       try {
         const response = await fetch('http://localhost:8000/api/v1/users/register',{
           method: 'POST',
@@ -339,7 +337,7 @@ function App(){
                     <input type="text" name="email" value={formData.email} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block  py-2 pl-1 pr-9 ml-12 w-50 h-11 " placeholder="pranav.sarwe@gmail.com" required/>
                   </div>
                   <div>
-                    <input type="text" id="fullName" value={formData.fullName} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 ml-4 w-88 h-11"  placeholder="Pranav Sarwe" required/>
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 ml-4 w-88 h-11"  placeholder="Pranav Sarwe" required/>
                   </div>
                 </div>
                 <div className="flex text-lg font-semibold text-gray-100 ml-12 mt-4">
@@ -347,10 +345,10 @@ function App(){
                 </div>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                   <div>
-                    <input type="text" id="username" className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block  py-2 pl-1 pr-9 ml-12 w-50 h-11 " placeholder="implus007" value={formData.username} onChange={handleChange} required/>
+                    <input type="text" name="username" className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block  py-2 pl-1 pr-9 ml-12 w-50 h-11 " placeholder="implus007" value={formData.username} onChange={handleChange} required/>
                   </div>
                   <div>
-                    <input type="text" id="password" value={formData.password} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 ml-4 w-88 h-11"  placeholder="AGCTF#%3245SFG" required/>
+                    <input type="text" name="password" value={formData.password} onChange={handleChange} className=" border border-gray-600 text-gray-900  bg-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 ml-4 w-88 h-11"  placeholder="AGCTF#%3245SFG" required/>
                   </div>
                 </div>
                 <div className="flex text-lg font-semibold text-gray-100 ml-12 mt-4">
@@ -363,7 +361,7 @@ function App(){
                   </div>
                 </div>
                 <div className='ml-12'>
-                  <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white" for="avatar">Add an Avatar</label>
+                  <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Add an Avatar</label>
                   <div className='w-80'><input className="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-300 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300" id="avatar" type="file" />
                   </div>
                 </div>
