@@ -3,12 +3,23 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 import morgan from "morgan";
 import multer from 'multer';
+import {User} from "./models/user.model.js"
+import {asyncHandler} from "./utils/asyncHandler.js"
+import mongoose from "mongoose";
+
 const app = express()
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
 
 }))
+
+// const sadf =  User.findOne({ username: "zero one"});
+// const gg = User.findById(sadf._id)
+// console.log(gg.schema.obj);
+// console.log(sadf.schema.paths.password);
+// // console.log(JSON.stringify(sadf, null, 2));
+
 
 app.use(express.json({limit: "16kb"}))
 app.use(express.urlencoded({extended: true, limit: "16kb"}))
