@@ -6,6 +6,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Register from '../components/Register/Register.jsx'
 import Login from '../components/Login/Login.jsx'
 import App from './App.jsx'
+import Home from '../components/Home/Home.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,12 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />
+      },
+      {
+        path: "home",
+        element: <Home />
       }
+
     ]
   }
 ])
