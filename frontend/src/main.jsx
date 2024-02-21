@@ -7,11 +7,13 @@ import Register from '../components/Register/Register.jsx'
 import Login from '../components/Login/Login.jsx'
 import App from './App.jsx'
 import Home from '../components/Home/Home.jsx'
+import { Outlet } from 'react-router-dom'
+import Landing from '../components/Landing/Landing.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App/>,
+    element: <Outlet />,
     children: [
       {
         path: "",
@@ -29,7 +31,6 @@ const router = createBrowserRouter([
         path: "home",
         element: <Home />
       }
-
     ]
   }
 ])
