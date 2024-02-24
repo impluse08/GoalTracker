@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .circle {
   @apply h-6 w-6 bg-[black] fixed pointer-events-none z-[99999999] rounded-3xl left-0 top-0;
   /* so that it stays on top of all other elements */
 }
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* Set the default sans-serif font to Inter */
 html {
