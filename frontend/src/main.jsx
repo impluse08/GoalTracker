@@ -9,7 +9,7 @@ import App from './App.jsx'
 import Home from '../components/Home/Home.jsx'
 import { Outlet } from 'react-router-dom'
 import Landing from '../components/Landing/Landing.jsx'
-
+import Change from '../components/Home/Change.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <Home />
+      },
+      {
+        path: "change",
+        element: <ChangeNumberComponent />
       }
     ]
   }

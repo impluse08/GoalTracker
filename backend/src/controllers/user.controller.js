@@ -2,9 +2,11 @@ import {asyncHandler} from "../utils/asyncHandler.js";
 import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import {User} from "../models/user.model.js"
+import {Change} from "../models/change.model.js"
 import {uploadOnCloudinary} from "../utils/cloudnary.js"
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
+
 
 
 const generateAccessAndRefreshTokens = async(userId) => {
@@ -20,7 +22,6 @@ const generateAccessAndRefreshTokens = async(userId) => {
         throw new ApiError(500, "Something went wrong while generating refresh and access token")
     }
 }
-
 
 const registerUser = asyncHandler( async (req, res) =>{
     const {fullName, email, username, password} = req.body
@@ -103,8 +104,58 @@ const loginUser = asyncHandler( async (req, res) => {
     )
 })
 
+const changeNumber = asyncHandler( async (req, res) => {
+    const getLatestChange = async () => {
+        try {
+            const currentChangeNumber = await Change.findOne({}, {}, { sort: { 'createdAt': -1 } });
+            const storedChangeNumber =  currentChangeNumber.changeNumber.replace('CHN', '');
+            // console.log(storedChangeNumber)
+            return parseInt(storedChangeNumber, 10);
+        } catch (error) {
+            console.error('Error fetching latest change:', error);
+            throw error; // Rethrow the error to propagate it further
+        }
+    };
+    
+    // Invoke the function and store the return value
+    const storedChangeNumber = await getLatestChange();
+    console.log('Stored change number:', storedChangeNumber, typeof storedChangeNumber);
+
+    // query to run a query for the latest change number
+    const newChangeNumber = storedChangeNumber + 1;
+
+    // Construct the new change number with padding
+    const prefix = "CHN";
+    const newChangeNumberString = prefix + newChangeNumber.toString().padStart(6, '0');
+    // console.log(newChangeNumberString);
+    // Create a new document in the database with the incremented change number
+    await Change.create({ changeNumber: newChangeNumberString });
+    // (function() {
+    //     const prefix = "CHN";
+    //     const newChangeNumberString  = prefix + storedChangeNumber.toString().padStart(6, '0'); // Adding some padding zeros
+    //     (async () => 
+    //     {
+    //         await Change.create({
+    //             changeNumber: storedChangeNumber
+    //         })
+    //     })();
+    // })();
+    return res.
+    status(200)
+    .json(
+        new ApiResponse(
+            200,
+            {
+                Change: newChangeNumberString
+            },
+            "changeNumber received Successfully"
+        )
+    )
+})
+
 
 export {
     registerUser,
-    loginUser
+    loginUser,
+    changeNumber
 } 

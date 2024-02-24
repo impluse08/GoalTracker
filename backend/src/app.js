@@ -4,6 +4,7 @@ import cors from "cors"
 import morgan from "morgan";
 import multer from 'multer';
 import {User} from "./models/user.model.js"
+import { Change } from "./models/change.model.js";
 import {asyncHandler} from "./utils/asyncHandler.js"
 import mongoose from "mongoose";
 

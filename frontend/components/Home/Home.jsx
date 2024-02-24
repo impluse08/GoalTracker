@@ -15,6 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+// import ChangeNumberComponent from 'C:/Users/Pra/Desktop/ProjectFile/MERN Project/frontend/components/Home/Change.jsx';
 
 const drawerWidth = 240;
 
@@ -130,6 +131,9 @@ function Home() {
             content displayed here
         </div>
       </Main>
+      {/* <div>
+        <ChangeNumberComponent />
+      </div> */}
     </Box>
   );
 }
