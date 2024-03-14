@@ -1,14 +1,23 @@
 import './App.css'
 import { Outlet } from 'react-router-dom'
 import Landing from '../components/Landing/Landing'
+import Home from './component/Home';
+import About from './component/About';
+import Testimonial from './component/Testimonial';
+import Contact from './component/Contact';
+import Footer from './component/Footer';
 
 function App() {
 
   return (
-      <>
-      <Landing />
-      </>
-    )
+      <div className='App'>  
+        <div className='px-10'><Home /></div>
+        <About />
+        <Testimonial />
+        <Contact />
+        <Footer />
+      </div>
+  )
 }
 
 export default App

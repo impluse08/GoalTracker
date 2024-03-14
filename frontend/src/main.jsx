@@ -1,15 +1,20 @@
-import './index.css'
+import './App.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import Register from '../components/Register/Register.jsx'
-import Login from '../components/Login/Login.jsx'
+
 import App from './App.jsx'
-import Home from '../components/Home/Home.jsx'
 import { Outlet } from 'react-router-dom'
-import Landing from '../components/Landing/Landing.jsx'
-import Change from '../components/Home/Change.jsx'
+import ChangeNumberComponent from '../components/Home/Change.jsx'
+
+import About from './component/About.jsx';
+import Home from './component/Home.jsx';
+import GetStarted from './component/GetStarted.jsx';
+import Contact from './component/Contact.jsx';
+
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,21 +25,27 @@ const router = createBrowserRouter([
         element: <App />
       },
       {
-        path: "login",
-        element: <Login />
-      },
-      {
-        path: "register",
-        element: <Register />
-      },
-      {
         path: "home",
         element: <Home />
       },
       {
         path: "change",
         element: <ChangeNumberComponent />
-      }
+      },
+      {
+        path: "about",
+        element : <About/>
+      },
+      {
+        path: "getstarted",
+        element: <GetStarted />
+      },
+      {
+        path: "contact",
+        element: <Contact />
+      },
+      
+      
     ]
   }
 ])
